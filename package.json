@@ -1,0 +1,29 @@
+{
+  "name": "project-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20 <21"
+  },
+  "scripts": {
+    "pg:start": "docker run --name graphqlpg -e POSTGRES_PASSWORD=mysecretpassword -p 5444:5432 -d postgres:14.6-alpine",
+    "pg:import-data": "tsc && node --env-file=.env dist/scripts/setupDb.js",
+    "dev": "node --env-file=.env --watch -r ts-node/register ./src/index.ts"
+  },
+  "dependencies": {
+    "@apollo/server": "4.10.1",
+    "graphql": "16.8.1",
+    "pg": "8.11.3",
+    "pg-camelcase": "0.0.3",
+    "sql-template-strings": "2.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.27",
+    "@types/pg": "8.11.2",
+    "csv-parser": "3.0.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.4.2"
+  },
+  "type": "commonjs"
+}

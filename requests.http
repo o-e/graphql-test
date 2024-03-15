@@ -1,0 +1,15 @@
+POST http://localhost:4000/
+Content-Type: application/json
+
+{
+  "query": "{ listInventory(limit: 2, offset: 0, filters: { in_stock: false, category: \"Clothing\" }, sort: { field: ORDER_COUNT, direction: DESC } ) { product_id category quantity name orders { order_id product_id amount } } }"
+}
+
+###
+
+POST http://localhost:4000/
+Content-Type: application/json
+
+{
+  "query": "mutation { updateInventory(product_id: \"prod3958#prod20201000075\", quantity: 10, name: \"New Product Name\", category: \"New Category\", sub_category: \"New SubCategory\") { product_id name quantity category sub_category orders { order_id product_id amount } } }"
+}
